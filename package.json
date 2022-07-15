@@ -1,0 +1,27 @@
+{
+  "name": "local-library",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/p-vale/local-library.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/p-vale/local-library/issues"
+  },
+  "homepage": "https://github.com/p-vale/local-library#readme",
+  "dependencies": {
+    "node": "^18.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
