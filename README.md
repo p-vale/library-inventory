@@ -1,4 +1,3 @@
-# local-library
+# library-inventory
 
-part 1: setup   
-part 2: route
+Small inventory for a library with node and mongoDB.
