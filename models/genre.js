@@ -4,7 +4,10 @@ const Schema = mongoose.Schema;
 
 let GenreSchema = new Schema(
   {
-    genre: {type: String, required: true, enum: ['Available', 'Maintenance', 'Loaned', 'Reserved'], default: 'Maintenance'},
+    name: { type: String, 
+      required: true, 
+      minlength: 3, 
+      maxlength: 100 },
   }
 );
 
