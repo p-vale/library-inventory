@@ -4,6 +4,7 @@ const Genre = require('../models/genre')
 const BookInstance = require('../models/bookinstance')
 
 const async = require('async')
+const { populate } = require('../models/book')
 
 exports.index = (req, res) => {
   async.parallel(
@@ -49,8 +50,31 @@ exports.book_list = (req, res, next) => {
 }
 
 // detail book
-exports.book_detail = (req, res) => {
-  res.send(`NOT IMPLEMENTED: Book detail: ${req.params.id}`)
+exports.book_detail = (req, res, next) => {
+  async.parallel({
+    book(callback) {
+      Book.findById(req.params.id)
+        .populate('author')
+        .populate('genre')
+        .exec(callback)
+    },
+    book_instance(callback) {
+      BookInstance.find({book: req.params.id}).exec(callback)
+    },
+  },
+  (err, results) => {
+    if (err) { return next(err) }
+    if (results.book == null) {
+      const err = new Error('Book not found')
+      err.status = 404
+      return next(err)
+    }
+    res.render('book_detail', {
+      title: results.book.title,
+      book: results.book,
+      book_instances: results.book_instance
+    })
+  })
 }
 
 // create on GET (dis)

@@ -32,7 +32,7 @@ router.post('/book/:id/update', book_controller.book_update_post)
 // one book GET
 router.get('/book/:id', book_controller.book_detail)
 
-// GET all book
+// all book GET
 router.get('/books', book_controller.book_list)
 
 // AUTHOR ROUTES

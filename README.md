@@ -1,3 +1,3 @@
 # library-inventory
 
-Small inventory for a library with node and mongoDB.
+Small inventory for a library made with express and mongoDB.

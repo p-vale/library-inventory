@@ -15,44 +15,32 @@ let AuthorSchema = new Schema(
 AuthorSchema
 .virtual('name')
 .get(function () {
-  let fullname = '';
+  let fullname = ''
   if (this.first_name && this.family_name) {
-    fullname = `${this.family_name}, ${this.first_name}`;
+    fullname = `${this.family_name}, ${this.first_name}`
   }
   if (!this.first_name || !this.family_name) {
-    fullname = '';
+    fullname = ''
   }
-  return fullname;
-});
-
-AuthorSchema.virtual('lifespan').get(() => {
-  let lifetime_string = ''
-  if (this.date_of_birth) {
-    lifetime_string = this.date_of_birth.getYear().toString()
-  }
-  lifetime_string += ' - '
-  if (this.date_of_death) {
-    lifetime_string += this.date_of_death.getYear()
-  }
-  return lifetime_string
+  return fullname
 })
 
 AuthorSchema
 .virtual('url')
-.get(() => {
+.get(function () {
   return '/catalog/author/' + this._id
 })
 
 AuthorSchema
 .virtual('birth_formatted')
-.get( function() {
+.get(function () {
   if (isNaN(this.date_of_birth)) {return ''}
   return '(' + DateTime.fromJSDate(this.date_of_birth).toLocaleString(DateTime.DATE_MED)
 })
 
 AuthorSchema
 .virtual('death_formatted')
-.get( function() {
+.get(function () {
   date = ' - ' + DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) + ')'
   if (isNaN(this.date_of_birth) && isNaN(this.date_of_death)) {
     date = ''
@@ -60,6 +48,11 @@ AuthorSchema
     date = ' - alive)'
   }
   return date
+})
+
+AuthorSchema.virtual('lifespan')
+.get(function () {
+  return this.birth_formatted + this.death_formatted
 })
 
 module.exports = mongoose.model('Author', AuthorSchema);
