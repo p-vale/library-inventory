@@ -17,7 +17,7 @@ AuthorSchema
 .get(function () {
   let fullname = ''
   if (this.first_name && this.family_name) {
-    fullname = `${this.family_name}, ${this.first_name}`
+    fullname = `${this.first_name} ${this.family_name}`
   }
   if (!this.first_name || !this.family_name) {
     fullname = ''
@@ -45,6 +45,11 @@ AuthorSchema
   if (isNaN(this.date_of_birth) && isNaN(this.date_of_death)) {
     date = ''
   } else if (isNaN(this.date_of_death)) {
+    date = ' - alive)'
+  // when adding new authors to mongodb not filled props are set to null
+  } else if (this.date_of_birth == null && this.date_of_death == null) {
+    date = ''
+  } else if (this.date_of_death == null) {
     date = ' - alive)'
   }
   return date
