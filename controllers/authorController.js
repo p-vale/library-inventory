@@ -152,7 +152,7 @@ exports.author_delete_post = [
 ]
 
 // update on GET
-exports.author_update_get = (req, res) => {
+exports.author_update_get = (req, res, next) => {
   res.send('NOT IMPLEMENTED: Author update GET')
 }
 
