@@ -131,9 +131,7 @@ exports.author_delete_post = [
         authors_books(callback) {Book.find({ author: req.body.authorid }).exec(callback)},
       },
       (err, results) => {
-        if (err) {
-          return next(err)
-        }
+        if (err) return next(err)
         if (results.authors_books.length > 0) {
           res.render('author_delete', {
             title: 'Delete Author',
@@ -143,7 +141,7 @@ exports.author_delete_post = [
           return
         }
         Author.findByIdAndRemove(req.body.authorid, (err) => {
-          if (err) {return next(err)}
+          if (err) return next(err)
           res.redirect('/catalog/authors')
         })
       }

@@ -27,9 +27,7 @@ AuthorSchema
 
 AuthorSchema
 .virtual('url')
-.get(function () {
-  return '/catalog/author/' + this._id
-})
+.get(function () { return '/catalog/author/' + this._id })
 
 AuthorSchema
 .virtual('birth_formatted')

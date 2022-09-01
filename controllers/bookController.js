@@ -188,7 +188,7 @@ exports.book_update_get = (req, res, next) => {
       genres(callback) {Genre.find(callback)}
     },
     (err, results) => {
-      if (err) {return next(err)}
+      if (err) return next(err)
       if (results.book == null){
         const err = new Error('Book not found')
         err.status = 404
@@ -196,7 +196,7 @@ exports.book_update_get = (req, res, next) => {
       }
       for (const genre of results.genres) {
         for (const bookGenre of results.book.genre) {
-          if (genre._id.toString() === bookGenre.id.toString()) {genre.checked = 'true'}
+          if (genre._id.toString() === bookGenre.id.toString()) genre.checked = 'true'
         }
       }
       res.render('book_form', {
@@ -253,9 +253,9 @@ exports.book_update_post = [
           genres(callback) { Genre.find(callback)}
         },
         (err, results) => {
-          if (err) {return next(err)}
+          if (err) return next(err)
           for (const genre of results.genres) {
-            if (book.genre.includes(genre._id)) {genre.checked = 'true'}
+            if (book.genre.includes(genre._id)) genre.checked = 'true'
           }
           res.render('book_form', {
             title: 'Update Book',
@@ -270,7 +270,7 @@ exports.book_update_post = [
     }
     Book.findByIdAndUpdate(req.params.id, book, {},
       (err, thebook) => {
-        if (err) {return next(err)}
+        if (err) return next(err)
         res.redirect(thebook.url)
       })
   }

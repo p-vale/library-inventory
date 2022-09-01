@@ -2,7 +2,6 @@ extends layout
 
 block content
   h1 Title: #{book.title}
-
   p #[strong Author: ]
     a(href=book.author.url) #{book.author.name}
   p #[strong Summary: ] #{book.summary}
@@ -12,7 +11,6 @@ block content
       a(href=val.url) #{val.name}
       if index < book.genre.length - 1
         |, 
-
   div(style='margin-left:20px;margin-top:20px')
     h4 Copies
 
@@ -27,7 +25,6 @@ block content
         p #[strong Due back: ] #{val.due_back}
       p #[strong Id: ]
         a(href=val.url) #{val._id}
-
     else
       p There are no copies of this book in the library.
     

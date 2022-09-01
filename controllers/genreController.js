@@ -10,7 +10,7 @@ exports.genre_list = (req, res, next) => {
   .sort({name : 1})
   .populate('name')
   .exec(function (err, list_genres) {
-    if (err) {return next(err)}
+    if (err) return next(err)
     res.render('genre_list', {
       title: 'Genres List',
       genre_list: list_genres
@@ -23,20 +23,18 @@ exports.genre_detail = (req, res, next) => {
   async.parallel(
     {
       genre(callback) {
-        Genre.findById(req.params.id).exec(callback);
+        Genre.findById(req.params.id).exec(callback)
       },
       genre_books(callback) {
-        Book.find({ genre: req.params.id }).exec(callback);
+        Book.find({ genre: req.params.id }).exec(callback)
       },
     },
     (err, results) => {
-      if (err) {
-        return next(err);
-      }
+      if (err) return next(err)
       if (results.genre == null) {
-        const err = new Error('Genre not found');
-        err.status = 404;
-        return next(err);
+        const err = new Error('Genre not found')
+        err.status = 404
+        return next(err)
       }
       res.render('genre_detail', {
         title: 'Genre Detail',
@@ -77,16 +75,12 @@ exports.genre_create_post = [
     } else {
       Genre.findOne({ name: req.body.name })
         .exec((err, found_genre) => {
-          if (err) {
-            return next(err)
-          }
+          if (err) return next(err)
           if (found_genre) {
             res.redirect(found_genre.url)
           } else {
             genre.save((err) => {
-              if (err) {
-                return next(err)
-              }
+              if (err) return next(err)
               res.redirect(genre.url)
             })
         }
@@ -97,8 +91,8 @@ exports.genre_create_post = [
 
 // Display Genre delete form on GET.
 exports.genre_delete_get = (req, res) => {
-  res.send('NOT IMPLEMENTED: Genre delete GET');
-};
+  res.send('NOT IMPLEMENTED: Genre delete GET')
+}
 
 // delete on POST
 exports.genre_delete_post = (req, res) => {

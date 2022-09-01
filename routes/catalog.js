@@ -6,12 +6,10 @@ const author_controller = require('../controllers/authorController')
 const genre_controller = require('../controllers/genreController')
 const book_instance_controller = require('../controllers/bookinstanceController')
 
-// catalog home page
 router.get('/', book_controller.index)
 
 // BOOK ROUTES
 // create book GET
-// NOTE This must come before route for id
 router.get('/book/create', book_controller.book_create_get)
 
 // create book POST
@@ -37,7 +35,6 @@ router.get('/books', book_controller.book_list)
 
 // AUTHOR ROUTES
 // create author GET 
-// NOTE This must come before route for id (i.e. display author)
 router.get('/author/create', author_controller.author_create_get)
 
 // create author POST
@@ -63,7 +60,6 @@ router.get('/authors', author_controller.author_list)
 
 // GENRE
 // create genre GET
-// NOTE This must come before route that displays Genre (uses id).
 router.get('/genre/create', genre_controller.genre_create_get)
 
 // create genre POST
