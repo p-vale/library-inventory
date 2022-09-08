@@ -96,12 +96,12 @@ exports.bookinstance_delete_get = (req, res, next) => {
     .exec((err, bookinstance) => {
       if (err) return next(err)
       if (bookinstance == null) {
-          res.redirect('/catalog/bookinstances');
+          res.redirect('/catalog/bookinstances')
       }
       res.render('bookinstance_delete', { 
         title: 'Delete BookInstance', 
         bookinstance:  bookinstance
-      });
+      })
   })
 }
 
@@ -125,30 +125,28 @@ exports.bookinstance_update_get = (req, res, next) => {
   async.parallel(
     {
       bookinstance(callback) {
-        BookInstance.findById(req.params.id)
-          .populate('book')
-          .exec(callback)
+          BookInstance.findById(req.params.id)
+            .populate('book')
+            .exec(callback)
       },
-      books(callback) {
-        Book.find(callback)
-      },
-    },
-    function (err, results) {
+      books(callback) {Book.find(callback)},
+    }, 
+    (err, results) => {
       if (err) return next(err)
-      if (results.bookinstance == null){
-        const err = new Error('Book copy not found')
-        err.status = 404
-        return next(err)
+      if (results.bookinstance == null) {
+          const err = new Error('Book copy not found')  
+          err.status = 404  
+          return next(err)  
       }
-      res.render('bookinstance_form', {
-        title: 'Update book copy',
-        book_list: results.books,
+      res.render('bookinstance_form', { 
+        title: 'Update  BookInstance', 
+        book_list : results.books, 
         selected_book : results.bookinstance.book._id, 
-        bookinstance: results.bookinstance
-      })
+        bookinstance: results.bookinstance 
+      }) 
     }
-  )
-}
+  )  
+} 
 
 // update on POST
 exports.bookinstance_update_post = [
