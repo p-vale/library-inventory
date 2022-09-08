@@ -129,9 +129,11 @@ exports.bookinstance_update_get = (req, res, next) => {
           .populate('book')
           .exec(callback)
       },
-      books(callback) {Book.find(callback)},
+      books(callback) {
+        Book.find(callback)
+      },
     },
-    (err, results) => {
+    function (err, results) {
       if (err) return next(err)
       if (results.bookinstance == null){
         const err = new Error('Book copy not found')
