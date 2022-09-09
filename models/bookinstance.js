@@ -4,16 +4,31 @@ const { DateTime } = require('luxon')
 const Schema = mongoose.Schema
 
 let BookInstanceSchema = new Schema({
-    book: { type: Schema.ObjectId, ref: 'Book', required: true }, // Reference to the associated book.
-    imprint: {type: String, required: true},
-    status: {type: String, required: true, enum:['Available', 'Maintenance', 'Loaned', 'Reserved'], default:'Maintenance'},
-    due_back: { type: Date, default: Date.now },
+    book: { 
+      type: Schema.ObjectId, 
+      ref: 'Book', 
+      required: true 
+    },
+    imprint: {
+      type: String, 
+      required: true
+    },
+    status: {
+      type: String, 
+      required: true, 
+      enum: ['Available', 'Maintenance', 'Loaned', 'Reserved'], 
+      default: 'Maintenance'
+    },
+    due_back: { 
+      type: Date, 
+      default: Date.now 
+    },
 })
 
 BookInstanceSchema
 .virtual('url')
 .get(function () {
-  return '/catalog/bookinstance/'+this._id
+  return '/catalog/bookinstance/' + this._id
 })
 
 

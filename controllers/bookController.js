@@ -167,18 +167,23 @@ exports.book_create_post = [
 // delete on GET (dis)
 exports.book_delete_get = (req, res, next) => {
   async.parallel({
-    book: function(callback) {
+    book(callback) {
       Book.findById(req.params.id).populate('author').populate('genre').exec(callback)
     },
-    book_bookinstances: function(callback) {
+    book_bookinstances(callback) {
       BookInstance.find({ 'book': req.params.id }).exec(callback)
     },
-  }, function(err, results) {
-    if (err) { return next(err) }
+  }, 
+  (err, results) => {
+    if (err) return next(err) 
     if (results.book == null) {
       res.redirect('/catalog/books')
     }
-    res.render('book_delete', { title: 'Delete Book', book: results.book, book_instances: results.book_bookinstances } )
+    res.render('book_delete', { 
+      title: 'Delete Book', 
+      book: results.book, 
+      book_instances: results.book_bookinstances 
+    })
   })
 }
 
@@ -187,31 +192,33 @@ exports.book_delete_post = [
   bp.json(),
   bp.urlencoded({ extended: false }),
   (req, res, next) => {
-    async.parallel({
-      book: function(callback) {
-        Book.findById(req.body.id).populate('author').populate('genre').exec(callback)
-      },
-      book_bookinstances: function(callback) {
-        BookInstance.find({ 'book': req.body.id }).exec(callback)
-      },
-    }, 
-    (err, results) => {
-      if (err) return next(err)
-      if (results.book_bookinstances.length > 0) {
-        res.render('book_delete', { 
-          title: 'Delete Book', 
-          book: results.book, 
-          book_instances: results.book_bookinstances 
-        })
-        return
-      } else {
-        Book.findByIdAndRemove(req.body.id, function deleteBook(err) {
-          if (err) return next(err)
-          res.redirect('/catalog/books')
-        })
+    async.parallel(
+      {
+        book(callback) {
+          Book.findById(req.body.id).populate('author').populate('genre').exec(callback)
+        },
+        book_bookinstances(callback) {
+          BookInstance.find({ 'book': req.body.id }).exec(callback)
+        },
+      }, 
+      (err, results) => {
+        if (err) return next(err)
+        if (results.book_bookinstances.length > 0) {
+          res.render('book_delete', { 
+            title: 'Delete Book', 
+            book: results.book, 
+            book_instances: results.book_bookinstances 
+          })
+          return
+        } else {
+          Book.findByIdAndRemove(req.body.id, function deleteBook(err) {
+            if (err) return next(err)
+            res.redirect('/catalog/books')
+          })
+        }
       }
-    })
-}
+    )
+  }
 ]
 
 // update on GET (dis)

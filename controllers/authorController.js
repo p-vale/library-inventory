@@ -104,18 +104,21 @@ exports.author_create_post = [
 exports.author_delete_get = (req, res, next) => {
   async.parallel(
     {
-      author(callback) { Author.findById(req.params.id).exec(callback)},
-      authors_books(callback) { Book.find({author: req.params.id}).exec(callback)}
+      author(callback) { 
+        Author.findById(req.params.id).exec(callback)
+      },
+      authors_books(callback) { 
+        Book.find({author: req.params.id}).exec(callback)
+      }
     },
     (err, results) => {
-      if (err) { return next(err)}
+      if (err) return next(err)
       if (results.author == null) {res.redirect('/catalog/authors')}
       res.render('author_delete', {
         title: 'Delete author',
         author: results.author,
         author_books: results.authors_books
-        }
-      )
+      })
     }
   )
 }
@@ -197,7 +200,7 @@ exports.author_update_post = [
   (req, res, next) => {
     const errors = validationResult(req)
     
-    var author = new Author(
+    let author = new Author(
       {
         first_name: req.body.first_name,
         family_name: req.body.family_name,

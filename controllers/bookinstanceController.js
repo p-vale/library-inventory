@@ -129,7 +129,7 @@ exports.bookinstance_update_get = (req, res, next) => {
             .populate('book')
             .exec(callback)
       },
-      books(callback) {Book.find(callback)},
+      books(callback) {Book.find(callback)}
     }, 
     (err, results) => {
       if (err) return next(err)
@@ -138,12 +138,7 @@ exports.bookinstance_update_get = (req, res, next) => {
           err.status = 404  
           return next(err)  
       }
-      res.render('bookinstance_form', { 
-        title: 'Update  BookInstance', 
-        book_list : results.books, 
-        selected_book : results.bookinstance.book._id, 
-        bookinstance: results.bookinstance 
-      }) 
+      res.render('done') 
     }
   )  
 } 

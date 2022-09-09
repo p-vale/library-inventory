@@ -71,12 +71,6 @@ router.get('/genre/:id/delete', genre_controller.genre_delete_get)
 // delete genre POST
 router.post('/genre/:id/delete', genre_controller.genre_delete_post)
 
-// update genre GET
-router.get('/genre/:id/update', genre_controller.genre_update_get)
-
-// delete genre POST
-router.post('/genre/:id/update', genre_controller.genre_update_post)
-
 // one genre GET
 router.get('/genre/:id', genre_controller.genre_detail)
 
