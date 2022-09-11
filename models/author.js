@@ -44,7 +44,6 @@ AuthorSchema
     date = ''
   } else if (isNaN(this.date_of_death)) {
     date = ' - alive)'
-  // when adding new authors to mongodb not filled props are set to null
   } else if (this.date_of_birth == null && this.date_of_death == null) {
     date = ''
   } else if (this.date_of_death == null) {

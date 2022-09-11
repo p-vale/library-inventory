@@ -3,18 +3,18 @@ extends layout
 block content
   h1= title
 
-  ul
   each val in bookinstance_list
-    li 
-      a(href=val.url) #{val.book.title} : #{val.imprint} - 
+    li(class='li-marker')
+      a(href=val.url) <i>"#{val.book.title}"</i>, #{val.imprint}
+      span - 
       if val.status=='Available'
-        span.text-success #{val.status}
+        span(class="label-text available") #{val.status}
       else if val.status=='Maintenance'
-        span.text-danger #{val.status}
+        span(class="label-text maintenance") #{val.status}
       else
-        span.text-warning #{val.status} 
+        span(class="label-text loaned") #{val.status}
       if val.status!='Available'
-        span  (Due: #{val.due_back_formatted} )
+        span  (due: #{val.due_back_formatted})
         
 
   else

@@ -3,31 +3,30 @@ extends layout
 block content
 
   h1= title
-  
-  p #[strong Do you really want to delete this BookInstance?]
-  
-  div(style="margin-left:20px")
 
-    p #[strong ID]: #{bookinstance._id}
+  p #[strong ID]: #{bookinstance._id}
+
+  p #[strong Title:] 
+    a(href=bookinstance.book.url) #{bookinstance.book.title}
   
-    p #[strong Title:] 
-      a(href=bookinstance.book.url) #{bookinstance.book.title}
+  p #[strong Imprint:] #{bookinstance.imprint}
+
+  p #[strong Status:] 
+    if bookinstance.status=='Available'
+      span(class="label-text available") #{bookinstance.status}
+    else if bookinstance.status=='Maintenance'
+      span(class="label-text maintenance") #{bookinstance.status}
+    else
+      span(class="label-text loaned") #{bookinstance.status} 
     
-    p #[strong Imprint:] #{bookinstance.imprint}
+  if bookinstance.status!='Available'
+    p #[strong Due back:] #{bookinstance.due_back_formatted}
 
-    p #[strong Status:] 
-      if bookinstance.status=='Available'
-        span.text-success #{bookinstance.status}
-      else if bookinstance.status=='Maintenance'
-        span.text-danger #{bookinstance.status}
-      else
-        span.text-warning #{bookinstance.status} 
-      
-    if bookinstance.status!='Available'
-      p #[strong Due back:] #{bookinstance.due_back_formatted}
+  br
+  div(class='center')
+    p Do you really want to delete this BookInstance?
+    form(method='POST' action='')
+      div.form-group
+        input#id.form-control(type='hidden',name='id', required='true', value=bookinstance._id )
 
-  form(method='POST' action='')
-    div.form-group
-      input#id.form-control(type='hidden',name='id', required='true', value=bookinstance._id )
-
-    button.btn.btn-primary(type='submit') Delete
+      button.btn.btn-primary(type='submit') Delete

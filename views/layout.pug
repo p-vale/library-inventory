@@ -6,32 +6,33 @@ html(lang='en')
     meta(name='viewport', content='width=device-width, initial-scale=1')
     <!-- link(rel='stylesheet', href='/stylesheets/style.css') -->
     style
-      include ./stylesheets/style.css
+      include ./stylesheets/tags.css
+      include ./stylesheets/areas.css
   body
     div(class='container')
-      div(class='row')
-        div(class='col')
-          block sidebar
-            ul(class='sidebar')
+      header
+        ul
+          li
+            a(href='/catalog') Home
+          li
+            a(href='/catalog/books') Books
+          li
+            a(href='/catalog/authors') Authors
+          li
+            a(href='/catalog/genres') Genres
+          li
+            a(href='/catalog/bookinstances') Book copies
+          li
+            p(class='create') Create: 
+            ul
               li
-                a(href='/catalog') Home
+                a(class='indent')(href='/catalog/author/create') new author
               li
-                a(href='/catalog/books') Books
+                a(class='indent')(href='/catalog/genre/create') new genre
               li
-                a(href='/catalog/authors') Authors
+                a(class='indent')(href='/catalog/book/create') new book
               li
-                a(href='/catalog/genres') Genres
-              li
-                a(href='/catalog/bookinstances') Book-instances
-              li
-                hr
-              li
-                a(href='/catalog/author/create') Create new author
-              li
-                a(href='/catalog/genre/create') Create new genre
-              li
-                a(href='/catalog/book/create') Create new book
-              li
-                a(href='/catalog/bookinstance/create') Create new book instance (copy)
-        div(class='col')
+                a(class='indent')(href='/catalog/bookinstance/create') new book copy
+      main
+        div(class='content')
           block content

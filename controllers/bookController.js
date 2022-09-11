@@ -29,7 +29,7 @@ exports.index = (req, res) => {
     },
     (err, results) => {
       res.render('index', { 
-        title: 'Local Library Home', 
+        title: 'Library Inventory', 
         error: err, 
         data: results 
       })

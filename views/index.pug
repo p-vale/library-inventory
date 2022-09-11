@@ -2,16 +2,27 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #[em The Library Invetory], a very basic Express website developed starting from a MDN example tutorial.
-  h1 Dynamic content
+  p Welcome to #[strong The Library Invetory], a very basic Express website developed starting from a MDN example tutorial, updated to Express 4 and styled.
+  h2(class='index-h2') Record counts
 
   if error
     p Error getting dynamic content.
   else
-    p The library has the following record counts:
-    ul
-      li #[strong Books:] !{data.book_count}
-      li #[strong Copies:] !{data.book_instance_count}
-      li #[strong Copies available:] !{data.book_instance_available_count}
-      li #[strong Authors:] !{data.author_count}
-      li #[strong Genres:] !{data.genre_count}
+    div
+      div(class='index-count-box')
+        div(class='index-count')
+          p #[strong Books]
+          p(class='index-count-data') !{data.book_count}
+          p  
+        div(class='index-count')
+          p #[strong Copies]
+          p(class='index-count-data') !{data.book_instance_count}
+          p copies available: !{data.book_instance_available_count}
+        div(class='index-count')
+          p #[strong Authors]
+          p(class='index-count-data') !{data.author_count}
+          p  
+        div(class='index-count')
+          p #[strong Genres]
+          p(class='index-count-data') !{data.genre_count}
+          p  
