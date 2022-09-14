@@ -1,21 +1,80 @@
+body {
+  background-color: #010a10;
+}
+
+/* Chrome, Safari and Opera */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* IE, Edge and Firefox */
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 .container {
-  margin-top: 20px;
   display: flex;
 }
 
 header {
-  width: 20vw;
-  padding: 20px;
+  width: 190px;
+  height: 100vh;
+  padding-top: 30px;
+  position: fixed;
+  background-color: #061b29;
 }
 
-.create {
+header > ul > li {
+  padding-left: 5px;
+}
+
+header > h3 {
+  margin-left: 5px;
+}
+
+header > ul > li:hover {
+  background-color: #092a41;
+}
+
+header > ul > li > a { /*overwrite tag a hover*/
+  margin: 0;
+  padding: 0;
+}
+
+header > ul > li > a:hover { /*overwrite tag a hover*/
+  background-color: transparent;
+}
+
+#create {
   margin-top: 20px;
 }
 
+#create:hover {
+  background-color: transparent;
+}
+
+#create > ul > li {
+  margin-left: -5px; /*overwrite header > li padding*/
+  padding-left: 20px;
+}
+
+#create > ul > li:hover {
+  background-color: #092a41;
+}
+
+#create > ul > li > a {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+}
+
 main {
+  margin-left: 190px; /*header space*/
   height: 100%;
   width: 100%;
   padding: 20px;
+  padding-top: 40px;
   display: flex;
   justify-content: center;
 }
@@ -31,13 +90,27 @@ main {
   width: 150px;
   height: 150px;
   padding: 10px;
-  border-radius: 5px;
-  color: black;
-  border: 2px solid black;
+  color: #f3f6f8;
+  border-top: 2px solid #010a10;
+  border-bottom: 2px solid #010a10;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  transition-property: border-top, border-bottom;
+  transition: all 0.75s ease-in-out;
+}
+
+.index-count:hover {
+  border-color: #f3f6f8;
+}
+
+.index-count:hover > .index-count-data {
+  transition: font-size 0.5s ease-in-out;
+}
+
+.index-count:hover > .index-count-data {
+  font-size: 80px;
 }
 
 dl {
@@ -57,6 +130,7 @@ form {
 .form-group {
   width: 100%;
   margin: 5px;
+  margin-top: 10px;
   display: flex;
 }
 
@@ -65,18 +139,45 @@ input, select {
   flex-grow: 1;
   max-width: 200;
   border: none;
-  border-bottom: 1px solid #0A3958;
-  background-color: white;
+  border-bottom: 1px solid #f3f6f8;
+  background-color: #010a10;
+  color: #4d7088;
+}
+
+::placeholder {
+  color: #4d7088;
+}
+:-ms-input-placeholder {
+  color: #4d7088;
+}
+::-ms-input-placeholder {
+color: #4d7088;
 }
 
 input:hover, select:hover {
-  background-color: #FEFAE0;
+  background-color: #092a41;
+  color: #f3f6f8;
+}
+
+input:hover::placeholder {
+  color: #f3f6f8;
+}
+input:hover:-ms-input-placeholder {
+  color: #f3f6f8;
+}
+input:hover::-ms-input-placeholder {
+  color: #f3f6f8;
+}
+
+::-webkit-calendar-picker-indicator { /*make calendar icon blue*/
+  filter: invert(0.4) sepia(100%) hue-rotate(150deg);
 }
 
 textarea:focus, input:focus, select:focus {
   outline: none;
-  border-bottom: 1px solid #BC6C25;
-  background-color: white;
+  border-bottom: 1px solid #bc2525;
+  background-color: #010a10;
+  color: #f3f6f8;
 }
 
 form > button {

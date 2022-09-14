@@ -40,7 +40,7 @@ exports.bookinstance_create_get = (req, res, next) => {
     .exec((err, books) => {
       if (err) return next(err)
       res.render('bookinstance_form', {
-        title: 'Create bookinstance',
+        title: 'Create book copy',
         book_list: books
       })
     })
@@ -73,7 +73,7 @@ exports.bookinstance_create_post = [
         .exec(function (err, books) {
           if (err) {return next(err)}
           res.render('bookinstance_form', {
-            title: 'Create bookinstance',
+            title: 'Create book copy',
             book_list: books,
             selected_book: bookinstance.book._id,
             errors: errors.array(),
@@ -99,7 +99,7 @@ exports.bookinstance_delete_get = (req, res, next) => {
           res.redirect('/catalog/bookinstances')
       }
       res.render('bookinstance_delete', { 
-        title: 'Delete BookInstance', 
+        title: 'Delete book copy', 
         bookinstance:  bookinstance
       })
   })

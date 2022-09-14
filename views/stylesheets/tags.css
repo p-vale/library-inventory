@@ -11,7 +11,7 @@ h1 {
   font-family: 'Montserrat', sans-serif;
   letter-spacing: .05rem;
   margin-bottom: 20px;
-  color: #0A3958;
+  color: #f3f6f8;
 }
 
 h2, h3, h4 {
@@ -20,7 +20,7 @@ h2, h3, h4 {
   font-weight: 300;
   letter-spacing: .05rem;
   margin-bottom: 20px;
-  color: #0A3958;
+  color: #f3f6f8;
 }
 
 .index-h2 {
@@ -31,18 +31,34 @@ h3, dt, dd {
   text-align: left;
 }
 
-dt > a {
-  font-size: 20px;
-  font-weight: 400;
-}
-
-p, a, li, dd {
+p, a, li, dd, label {
   font-size: 16px;
   font-family: 'Hind Madurai', sans-serif;
   font-weight: 300;
   letter-spacing: .05rem;
   margin-bottom: 5px;
-  color: black;
+  color: #f3f6f8;
+}
+
+label {
+  margin-bottom: 0px;
+}
+
+dt {
+  margin-top: 10px;
+}
+
+dt > a {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+dt > a:link {
+  color: #bc2525;
+}
+
+dt > a:visited {
+  color: #bc2525;
 }
 
 li { /*conditional rendering doesn't fall inside ul*/
@@ -55,7 +71,7 @@ li { /*conditional rendering doesn't fall inside ul*/
 }
 
 a:link {
-  color: black;
+  color: #bde5ff;
   text-decoration: none;
   padding: 1px;
   padding-left: 3px;
@@ -64,33 +80,38 @@ a:link {
 }
 
 a:visited {
-  color: #38526B;
+  color: #d2d6db;
 }
 
 a:hover {
-  background-color: #FEFAE0;
+  background-color: #092a41;
 }
 
 button {
   min-width: 100px;
-  padding: 10px;
+  padding: 8px;
+  padding-top: 10px;
   border-radius: 5px;
-  border: 1px solid white;
+  border: none;
   text-transform: uppercase;
-  color: white;
-  background-color: #0A3958;
+  font-size: 16px;
+  letter-spacing: .05rem;
+  color: #010a10;
+  background-color: #bc2525;
+  transition-property: box-shadow, background-color, color;
+  transition: all 0.5s ease;
 }
 
 button:hover {
-  background-color: white;
-  color: #0A3958;
-  border-color: #0A3958;
+  background-color: #010a10;
+  color: #bc2525;
+  box-shadow: 0px 0px 5px 2px #bc2525;
 }
 
 .index-count-data {
   font-size: 60px;
   font-family: 'Lora', serif;
-  color: #BC6C25;
+  color: #bc2525;
 }
 
 .label-text {
@@ -103,28 +124,147 @@ button:hover {
   border-radius: 2px;
   border-style: solid;
   border-width: 1px;
+  border-color: transparent;
 }
 
 .available {
   max-width: 62px;
-  color: rgb(38, 92, 11);
-  border-color: rgb(38, 92, 11);
-  background-color: rgb(238, 242, 236);
+  color: rgb(238, 242, 236);
+  background-color: rgb(38, 92, 11);
 }
 .maintenance {
   max-width: 80px;
-  color: rgb(157, 41, 12);
-  border-color: rgb(157, 41, 12);
-  background-color: rgb(245, 240, 239);
+  color: rgb(245, 240, 239);
+  background-color: rgb(157, 41, 12);
 }
 .loaned {
   max-width: 45px;
-  color: #BC6C25;
-  border-color: #BC6C25;
-  background-color: #FEFAE0;
+  color: #FEFAE0;
+  background-color: #BC6C25;
 }
 
 .notice {
-  color: #BC6C25;
+  color: #bc2525;
   font-weight: 400;
+}
+
+.form-space {
+  margin-right: 10px;
+}
+
+/* container setup*/
+.check-container {
+  display: inline-block;
+  position: relative;
+  padding-left: 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* hide default checkbox */
+.check-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  left: -4px;
+  z-index: 2;
+}
+
+/* custom checkbox */
+.checkmark {
+  position: absolute;
+  margin-top: 2px;
+  top: 0;
+  left: 0;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background-color: #092a41;
+}
+
+.check-container:hover input ~ .checkmark {
+  background-color: #bc2525;
+}
+
+.check-container input:checked ~ .checkmark {
+  background-color: #bc2525;
+}
+
+/* create the checkmark indicator */
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+/* show checkmark when checked */
+.check-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* style checkmark indicator */
+.check-container .checkmark:after {
+  left: 4px;
+  top: 1px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.styled-link {
+  width: 150px;
+  padding: 8px;
+  padding-top: 10px;
+  margin: auto;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  background-color: #092a41;
+  transition-property: box-shadow, background-color, color;
+  transition: all 0.5s ease;
+}
+
+.styled-link:hover {
+  background-color: #010a10;
+  color: #d2d6db;
+  box-shadow: 0px 0px 5px 2px #092a41;
+}
+
+.styled-link > a:hover {
+  background-color: transparent;
+  color: #d2d6db;
+}
+
+.styled-link-del {
+  width: 150px;
+  padding: 8px;
+  padding-top: 10px;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid #092a41;
+  text-align: center;
+  background-color: #010a10;
+  transition: box-shadow 0.5s ease;
+}
+
+.styled-link-del:hover {
+  box-shadow: 0px 0px 5px 2px #092a41;
+}
+
+.styled-link-del > a {
+  color: #41759a;
+}
+
+.styled-link-del:hover > a {
+  background-color: transparent;
+  color: #d2d6db;
 }

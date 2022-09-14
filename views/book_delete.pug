@@ -20,7 +20,7 @@ block content
       p(class='notice') Delete the following copies before attempting to delete this Book:
     
       each book_copy in book_instances
-        hr
+        hr(style='margin-bottom: 5px;')
         if book_copy.status=='Available'
           p(class="label-text available") #{book_copy.status}
         else if book_copy.status=='Maintenance'

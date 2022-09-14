@@ -16,7 +16,7 @@ block content
     h3 Copies
 
     each val in book_instances
-      hr
+      hr(style='margin-bottom: 5px;')
       if val.status=='Available'
         p(class="label-text available") #{val.status}
       else if val.status=='Maintenance'
@@ -33,7 +33,7 @@ block content
     
   hr
   br
-  p
-    a(href=book.url+'/delete') Delete Book
-  p
+  p.styled-link
     a(href=book.url+'/update') Update Book
+  p.styled-link-del
+    a(href=book.url+'/delete') Delete Book

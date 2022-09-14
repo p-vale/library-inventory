@@ -11,6 +11,7 @@ html(lang='en')
   body
     div(class='container')
       header
+        h3 Library Inventory 
         ul
           li
             a(href='/catalog') Home
@@ -22,8 +23,8 @@ html(lang='en')
             a(href='/catalog/genres') Genres
           li
             a(href='/catalog/bookinstances') Book copies
-          li
-            p(class='create') Create: 
+          li(id='create')
+            p Create: 
             ul
               li
                 a(class='indent')(href='/catalog/author/create') new author

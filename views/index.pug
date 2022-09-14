@@ -13,16 +13,15 @@ block content
         div(class='index-count')
           p #[strong Books]
           p(class='index-count-data') !{data.book_count}
-          p  
         div(class='index-count')
           p #[strong Copies]
           p(class='index-count-data') !{data.book_instance_count}
-          p copies available: !{data.book_instance_available_count}
+        div(class='index-count')
+          p #[strong Available Copies]
+          p(class='index-count-data') !{data.book_instance_available_count}
         div(class='index-count')
           p #[strong Authors]
           p(class='index-count-data') !{data.author_count}
-          p  
         div(class='index-count')
           p #[strong Genres]
           p(class='index-count-data') !{data.genre_count}
-          p  
