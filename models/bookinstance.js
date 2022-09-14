@@ -5,7 +5,7 @@ const Schema = mongoose.Schema
 
 let BookInstanceSchema = new Schema({
     book: { 
-      type: Schema.ObjectId, 
+      type: Schema.Types.ObjectId, 
       ref: 'Book', 
       required: true 
     },

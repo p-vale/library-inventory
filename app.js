@@ -8,6 +8,7 @@ const logger = require('morgan')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
 dotenv.config()
+mongoose.set('debug', true)
 
 // set up mongoose connection
 let mongoDB = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.fxlzm8v.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`

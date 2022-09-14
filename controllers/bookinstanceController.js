@@ -125,41 +125,47 @@ exports.bookinstance_update_get = (req, res, next) => {
   async.parallel(
     {
       bookinstance(callback) {
-          BookInstance.findById(req.params.id)
-            .populate('book')
-            .exec(callback)
+        BookInstance
+          .findById(req.params.id)
+          .populate('book')
+          .exec(callback)
       },
-      books(callback) {Book.find(callback)}
-    }, 
+      books(callback) { Book.find(callback) },
+    },
     (err, results) => {
       if (err) return next(err)
       if (results.bookinstance == null) {
-          const err = new Error('Book copy not found')  
-          err.status = 404  
-          return next(err)  
+        let err = new Error('Book copy not found')
+        err.status = 404
+        return next(err)
       }
-      res.render('done') 
+      res.render('bookinstance_form', {
+        title: 'Update book copy',
+        book_list: results.books,
+        selected_book: results.bookinstance.book._id,
+        bookinstance: results.bookinstance,
+      })
     }
-  )  
-} 
+  )
+}
 
 // update on POST
 exports.bookinstance_update_post = [
   bp.json(),
   bp.urlencoded({ extended: false }),
-  body("book", "Book reference needed.")
+  body('book', 'Book reference needed.')
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  body("imprint", "Imprint must not be empty.")
+  body('imprint', 'Imprint must not be empty.')
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  body("status", "Status must not be empty.")
+  body('status', 'Status must not be empty.')
     .trim()
     .isLength({ min: 1 })
     .escape(),
-  body("due_back", "Due back date is optional.")
+  body('due_back', 'Due back date is optional.')
     .trim()
     .escape(),
   (req, res, next) => {
