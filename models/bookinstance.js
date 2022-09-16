@@ -16,7 +16,7 @@ let BookInstanceSchema = new Schema({
     status: {
       type: String, 
       required: true, 
-      enum: ['Available', 'Maintenance', 'Loaned', 'Reserved'], 
+      enum: ['Available', 'Maintenance', 'Loaned'], 
       default: 'Maintenance'
     },
     due_back: { 

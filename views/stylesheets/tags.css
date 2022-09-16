@@ -108,12 +108,6 @@ button:hover {
   box-shadow: 0px 0px 5px 2px #bc2525;
 }
 
-.index-count-data {
-  font-size: 60px;
-  font-family: 'Lora', serif;
-  color: #bc2525;
-}
-
 .label-text {
   font-size: 11px;
   font-weight: 400;
@@ -125,6 +119,12 @@ button:hover {
   border-style: solid;
   border-width: 1px;
   border-color: transparent;
+}
+
+.index-count-data {
+  font-size: 60px;
+  font-family: 'Lora', serif;
+  color: #bc2525;
 }
 
 .available {
@@ -146,125 +146,4 @@ button:hover {
 .notice {
   color: #bc2525;
   font-weight: 400;
-}
-
-.form-space {
-  margin-right: 10px;
-}
-
-/* container setup*/
-.check-container {
-  display: inline-block;
-  position: relative;
-  padding-left: 20px;
-  margin-right: 10px;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* hide default checkbox */
-.check-container input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  left: -4px;
-  z-index: 2;
-}
-
-/* custom checkbox */
-.checkmark {
-  position: absolute;
-  margin-top: 2px;
-  top: 0;
-  left: 0;
-  height: 15px;
-  width: 15px;
-  border-radius: 15px;
-  background-color: #092a41;
-}
-
-.check-container:hover input ~ .checkmark {
-  background-color: #bc2525;
-}
-
-.check-container input:checked ~ .checkmark {
-  background-color: #bc2525;
-}
-
-/* create the checkmark indicator */
-.checkmark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
-
-/* show checkmark when checked */
-.check-container input:checked ~ .checkmark:after {
-  display: block;
-}
-
-/* style checkmark indicator */
-.check-container .checkmark:after {
-  left: 4px;
-  top: 1px;
-  width: 4px;
-  height: 8px;
-  border: solid white;
-  border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-.styled-link {
-  width: 150px;
-  padding: 8px;
-  padding-top: 10px;
-  margin: auto;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: none;
-  text-align: center;
-  background-color: #092a41;
-  transition-property: box-shadow, background-color, color;
-  transition: all 0.5s ease;
-}
-
-.styled-link:hover {
-  background-color: #010a10;
-  color: #d2d6db;
-  box-shadow: 0px 0px 5px 2px #092a41;
-}
-
-.styled-link > a:hover {
-  background-color: transparent;
-  color: #d2d6db;
-}
-
-.styled-link-del {
-  width: 150px;
-  padding: 8px;
-  padding-top: 10px;
-  margin: auto;
-  border-radius: 5px;
-  border: 1px solid #092a41;
-  text-align: center;
-  background-color: #010a10;
-  transition: box-shadow 0.5s ease;
-}
-
-.styled-link-del:hover {
-  box-shadow: 0px 0px 5px 2px #092a41;
-}
-
-.styled-link-del > a {
-  color: #41759a;
-}
-
-.styled-link-del:hover > a {
-  background-color: transparent;
-  color: #d2d6db;
 }
