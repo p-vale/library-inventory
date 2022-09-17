@@ -37,7 +37,7 @@ exports.genre_detail = (req, res, next) => {
         return next(err)
       }
       res.render('genre_detail', {
-        title: 'Genre detail',
+        title: 'Genre Detail',
         genre: results.genre,
         genre_books: results.genre_books,
       })
@@ -47,7 +47,7 @@ exports.genre_detail = (req, res, next) => {
 
 // create on GET (disp)
 exports.genre_create_get = (req, res, next) => {
-  res.render('genre_form', {title: 'greate Genre'})
+  res.render('genre_form', {title: 'Create Genre'})
 }
 
 // create on POST
@@ -67,7 +67,7 @@ exports.genre_create_post = [
 
     if (!errors.isEmpty()) {
       res.render('genre_form', {
-        title: 'Create genre',
+        title: 'Create Genre',
         genre,
         errors: errors.array(),
       })
@@ -106,7 +106,7 @@ exports.genre_delete_get = (req, res, next) => {
         res.redirect('/catalog/genres')
       }
       res.render('genre_delete', { 
-        title: 'Delete genre', 
+        title: 'Delete Genre', 
         genre: results.genre, 
         genre_books: results.genre_books 
       })
@@ -133,7 +133,7 @@ exports.genre_delete_post = [
         if (err) return next(err)
         if (results.genre_books.length > 0) {
           res.render('genre_delete', { 
-            title: 'Delete genre', 
+            title: 'Delete Genre', 
             genre: results.genre, 
             genre_books: results.genre_books 
           })

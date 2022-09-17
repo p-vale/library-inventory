@@ -35,7 +35,7 @@ exports.author_detail = (req, res, next) => {
         return next(err)
       }
       res.render('author_detail', {
-        title: 'Author detail',
+        title: 'Author Detail',
         author: results.author,
         author_books: results.authors_books
       })
@@ -45,7 +45,7 @@ exports.author_detail = (req, res, next) => {
 
 // create form on GET
 exports.author_create_get = (req, res, next) => {
-  res.render('author_form', {title: 'Create author'})
+  res.render('author_form', {title: 'Create Author'})
 }
 
 // create on POST
@@ -78,7 +78,7 @@ exports.author_create_post = [
 
     if (!errors.isEmpty()) {
       res.render('author_form', {
-        title: 'Create author',
+        title: 'Create Author',
         author: req.body,
         errors: errors.array(),
       })
@@ -115,7 +115,7 @@ exports.author_delete_get = (req, res, next) => {
       if (err) return next(err)
       if (results.author == null) {res.redirect('/catalog/authors')}
       res.render('author_delete', {
-        title: 'Delete author',
+        title: 'Delete Author',
         author: results.author,
         author_books: results.authors_books
       })
@@ -137,7 +137,7 @@ exports.author_delete_post = [
         if (err) return next(err)
         if (results.authors_books.length > 0) {
           res.render('author_delete', {
-            title: 'Delete author',
+            title: 'Delete Author',
             author: results.author,
             author_books: results.authors_books,
           })
@@ -163,7 +163,7 @@ exports.author_update_get = (req, res, next) => {
           return next(err)
     }
     res.render('author_form', { 
-      title: 'Update author', 
+      title: 'Update Author', 
       author: author 
     })
   })
@@ -212,7 +212,7 @@ exports.author_update_post = [
 
     if (!errors.isEmpty()) {
       res.render('author_form', { 
-        title: 'Update author', 
+        title: 'Update Author', 
         author: author, 
         errors: errors.array() 
       })

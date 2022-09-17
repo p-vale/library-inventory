@@ -11,7 +11,11 @@ html(lang='en')
       block style
   body
     div(class='container')
-      header
+      div.burger#burger
+        div(class='burger-line burger-line-close-1')
+        div(class='burger-line burger-line-close-2')
+        div(class='burger-line burger-line-close-3')
+      header#header
         h3 Library Inventory 
         ul
           li
@@ -38,3 +42,4 @@ html(lang='en')
       main
         div(class='content')
           block content
+    script(src='/public/javascripts/burger.js')

@@ -89,7 +89,7 @@ exports.book_create_get = (req, res, next) => {
     (err, results) => {
       if (err) { return next(err) }
       res.render('book_form', {
-        title: 'Create book',
+        title: 'Create Book',
         authors: results.authors,
         genres: results.genres
       })
@@ -147,7 +147,7 @@ exports.book_create_post = [
             genre.checked = 'true'
           }
           res.render('book_form', {
-            title: 'Create book',
+            title: 'Create Book',
             authors: results.authors,
             genres: results.genres,
             book,
@@ -180,7 +180,7 @@ exports.book_delete_get = (req, res, next) => {
       res.redirect('/catalog/books')
     }
     res.render('book_delete', { 
-      title: 'Delete book', 
+      title: 'Delete Book', 
       book: results.book, 
       book_instances: results.book_bookinstances 
     })
@@ -205,7 +205,7 @@ exports.book_delete_post = [
         if (err) return next(err)
         if (results.book_bookinstances.length > 0) {
           res.render('book_delete', { 
-            title: 'Delete book', 
+            title: 'Delete Book', 
             book: results.book, 
             book_instances: results.book_bookinstances 
           })
@@ -247,7 +247,7 @@ exports.book_update_get = (req, res, next) => {
         }
       }
       res.render('book_form', {
-        title: 'Update book',
+        title: 'Update Book',
         authors: results.authors,
         genres: results.genres,
         book: results.book
@@ -305,7 +305,7 @@ exports.book_update_post = [
             if (book.genre.includes(genre._id)) genre.checked = 'true'
           }
           res.render('book_form', {
-            title: 'Update book',
+            title: 'Update Book',
             authors: results.authors,
             genres: results.genres,
             book,

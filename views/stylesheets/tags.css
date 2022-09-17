@@ -32,7 +32,7 @@ h3, dt, dd {
 }
 
 p, a, li, dd, label {
-  font-size: 16px;
+  font-size: 17px;
   font-family: 'Hind Madurai', sans-serif;
   font-weight: 300;
   letter-spacing: .05rem;
@@ -146,4 +146,55 @@ button:hover {
 .notice {
   color: #bc2525;
   font-weight: 400;
+}
+
+
+.styled-link {
+  width: 150px;
+  padding: 8px;
+  padding-top: 10px;
+  margin: auto;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: none;
+  text-align: center;
+  background-color: #092a41;
+  transition-property: box-shadow, background-color, color;
+  transition: all 0.5s ease;
+}
+
+.styled-link:hover {
+  background-color: #010a10;
+  color: #d2d6db;
+  box-shadow: 0px 0px 5px 2px #092a41;
+}
+
+.styled-link > a:hover {
+  background-color: transparent;
+  color: #d2d6db;
+}
+
+.styled-link-del {
+  width: 150px;
+  padding: 8px;
+  padding-top: 10px;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid #092a41;
+  text-align: center;
+  background-color: #010a10;
+  transition: box-shadow 0.5s ease;
+}
+
+.styled-link-del:hover {
+  box-shadow: 0px 0px 5px 2px #092a41;
+}
+
+.styled-link-del > a {
+  color: #41759a;
+}
+
+.styled-link-del:hover > a {
+  background-color: transparent;
+  color: #d2d6db;
 }

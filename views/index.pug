@@ -5,7 +5,7 @@ block style
 
 block content
   h1= title
-  p Welcome to #[strong The Library Invetory], a very basic Express website developed starting from a MDN example tutorial, updated to Express 4 and styled.
+  p Welcome to #[strong The Library Invetory], a very basic Express website developed starting from a MDN example tutorial, updated to Express 4 and Mongoose 6, and with a dark-style frontend.
   h2(class='index-h2') Record counts
 
   if error
@@ -14,17 +14,17 @@ block content
     div
       div(class='index-count-box')
         div(class='index-count')
-          p #[strong Books]
           p(class='index-count-data') !{data.book_count}
+          p #[strong Books]
         div(class='index-count')
-          p #[strong Copies]
           p(class='index-count-data') !{data.book_instance_count}
+          p #[strong Copies]
         div(class='index-count')
-          p #[strong Available Copies]
           p(class='index-count-data') !{data.book_instance_available_count}
+          p #[strong Available Copies]
         div(class='index-count')
-          p #[strong Authors]
           p(class='index-count-data') !{data.author_count}
+          p #[strong Authors]
         div(class='index-count')
-          p #[strong Genres]
           p(class='index-count-data') !{data.genre_count}
+          p #[strong Genres]
