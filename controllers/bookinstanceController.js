@@ -122,31 +122,27 @@ exports.bookinstance_delete_post = [
 
 // update on GET (disp)
 exports.bookinstance_update_get = (req, res, next) => {
-  async.parallel(
-    {
-      bookinstance(callback) {
-        BookInstance
-          .findById(req.params.id)
-          .populate('book')
-          .exec(callback)
-      },
-      books(callback) { Book.find(callback) },
-    },
-    (err, results) => {
+  BookInstance
+    .findById(req.params.id)
+    .populate('book')
+    .exec((err, bookinstance) => {
       if (err) return next(err)
-      if (results.bookinstance == null) {
+      if (bookinstance == null) {
         let err = new Error('Book copy not found')
         err.status = 404
         return next(err)
       }
-      res.render('bookinstance_form', {
-        title: 'Update book copy',
-        book_list: results.books,
-        selected_book: results.bookinstance.book._id,
-        bookinstance: results.bookinstance,
-      })
-    }
-  )
+      Book.find({}, 'title')
+        .exec((err, books) => {
+          if (err) return next(err)
+          res.render('bookinstance_form', {
+            title: 'Update book copy',
+            book_list: books,
+            selected_book: bookinstance.book._id,
+            bookinstance: bookinstance,
+          })
+        })
+    })
 }
 
 // update on POST

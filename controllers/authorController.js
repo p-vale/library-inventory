@@ -10,7 +10,7 @@ exports.author_list = (req, res, next) => {
     .sort([['family_name', 'ascending']])
     .exec(function (err, list_authors) {
       if (err) {return next(err)}
-      res.render('author_list', {title: 'Author list', author_list: list_authors})
+      res.render('author_list', {title: 'Author List', author_list: list_authors})
     })
 }
 
@@ -35,7 +35,7 @@ exports.author_detail = (req, res, next) => {
         return next(err)
       }
       res.render('author_detail', {
-        title: 'Author Detail',
+        title: 'Author detail',
         author: results.author,
         author_books: results.authors_books
       })
@@ -45,7 +45,7 @@ exports.author_detail = (req, res, next) => {
 
 // create form on GET
 exports.author_create_get = (req, res, next) => {
-  res.render('author_form', {title: 'Create Author'})
+  res.render('author_form', {title: 'Create author'})
 }
 
 // create on POST
@@ -78,7 +78,7 @@ exports.author_create_post = [
 
     if (!errors.isEmpty()) {
       res.render('author_form', {
-        title: 'Create Author',
+        title: 'Create author',
         author: req.body,
         errors: errors.array(),
       })
@@ -137,7 +137,7 @@ exports.author_delete_post = [
         if (err) return next(err)
         if (results.authors_books.length > 0) {
           res.render('author_delete', {
-            title: 'Delete Author',
+            title: 'Delete author',
             author: results.author,
             author_books: results.authors_books,
           })
@@ -163,7 +163,7 @@ exports.author_update_get = (req, res, next) => {
           return next(err)
     }
     res.render('author_form', { 
-      title: 'Update Author', 
+      title: 'Update author', 
       author: author 
     })
   })
@@ -212,7 +212,7 @@ exports.author_update_post = [
 
     if (!errors.isEmpty()) {
       res.render('author_form', { 
-        title: 'Update Author', 
+        title: 'Update author', 
         author: author, 
         errors: errors.array() 
       })
